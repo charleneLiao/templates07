@@ -1,0 +1,142 @@
+@use './variables' as *;
+@use './breakpoints' as *;
+@use './mixins' as *;
+
+.bookingBarComponent {
+  position: absolute;
+  width: 780px;
+  bottom: 8em;
+  z-index: 5;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  backdrop-filter: blur(10px); // 模糊效果
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba($white, 0.9);
+  border-radius: 3em;
+  padding: 0.4em 0 0.4em 1.5em;
+
+  .container {
+    padding: 0;
+    margin: 0;
+  }
+
+  .action {
+    background-color: $white;
+    border-radius: 8em;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid $primary;
+    color: $primary;
+    font-size: 0.7em;
+    padding: 0.2em 0.5em;
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+
+  .col-md-6,
+  .col-md-2 {
+    border-right: 1px solid $gray-secondary;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .col-md-2 {
+    padding: 0 0.8em;
+  }
+
+  i {
+    color: $primary;
+    font-size: 1.5em;
+    margin-right: 8px;
+  }
+
+  .flatpickr {
+    color: $primary;
+    // margin-left: 0.9em;
+    border: none;
+    letter-spacing: 1px;
+    padding: 0 0.5em;
+    border-radius: 1em;
+
+    &:focus-visible,
+    &:hover {
+      outline: none;
+      background-color: $secondary;
+    }
+  }
+
+  input[type="date"] {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+  }
+
+  .hd {
+    background-color: $primary-light;
+    padding: 0.5em;
+    color: $primary;
+  }
+
+  .btn {
+    padding: 0;
+  }
+
+  .btn-link,
+  .btn.rounded-circle {
+    font-size: 1.5rem;
+    color: #000;
+    text-decoration: none;
+    background-color: $white;
+
+    &:hover {
+      color: #555;
+    }
+  }
+
+  .btn-dark {
+    border-radius: 2em;
+    padding: 0.3em 2.2em;
+  }
+
+  .row {
+    gap: 0;
+    align-items: center;
+  }
+
+  // 每個欄位垂直置中
+  .row>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-width: 0;
+  }
+
+  // 修正 + - 按鈕尺寸與一致性
+  .btn.rounded-circle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .inoutbox {
+    padding: 0.5em;
+  }
+
+  @include respond-max(sm) {
+    .inoutbox {
+      padding: 0.5em;
+    }
+  }
+}

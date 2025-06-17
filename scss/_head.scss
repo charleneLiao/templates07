@@ -1,0 +1,578 @@
+@use './variables' as *;
+@use './breakpoints' as *;
+@use './animations';
+@use './mixins' as *;
+
+#headerComponent {
+  .gn-header {
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    will-change: transform, opacity;
+  }
+
+  .gn-header.sticky {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .show {
+    .gn-header {
+      background-color: rgba($black, 0.4);
+    }
+  }
+
+}
+
+.gn-header {
+  background-color: rgba($black, 0.1);
+  position: absolute;
+  z-index: 1000;
+  padding: 0.5em 1em;
+  color: rgba($secondary, 1);
+
+  .action-buttons {
+    display: flex;
+    align-items: center; // 垂直置中
+    justify-content: center;
+    gap: 1.3em;
+    margin: 0 1.3em;
+
+    i {
+      font-size: 1.1em;
+    }
+  }
+
+  .logo-svg {
+    color: $secondary;
+    height: 23px;
+  }
+
+  .language-selector {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .action-buttons {
+    .btn {
+      &.btn-room {
+        background-color: #000;
+      }
+
+      &.btn-restaurant {
+        background-color: #6f4e37;
+      }
+    }
+  }
+
+  .menu-icon {
+    width: 57px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9em;
+    white-space: nowrap;
+
+    .icon-lines {
+      div {
+        height: 2px;
+        background-color: $white;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+      }
+    }
+
+    &.open .icon-lines div:first-child {
+      transform: rotate(33deg) translate(0px, 0px);
+    }
+
+    &.open .icon-lines div:last-child {
+      transform: rotate(-35deg) translate(4px, -4px);
+    }
+  }
+
+  .menu li {
+    position: relative;
+
+    .submenu {
+      display: none !important;
+    }
+
+    &:hover>.submenu {
+      display: none !important;
+    }
+  }
+
+  .d-flex.justify-content-between.align-items-center {
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @include respond-max(md) {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  .action-buttons {
+    @include respond-max(lg) {
+      .btn {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 49px;
+    right: 15px;
+
+    @include respond-max(lg) {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.main-menu {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 500px;
+  background-color: $primary;
+  z-index: 22;
+  overflow: hidden;
+  padding: 9rem 3rem 2rem 3rem;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  .has-submenu {
+    position: relative;
+
+    a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .toggle-icon {
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+        transform: rotate(0deg); // 預設向下
+      }
+    }
+
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    &:hover {
+      .submenu {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      .toggle-icon {
+        transform: rotate(180deg); // 向上箭頭
+      }
+    }
+
+    i {
+      font-weight: 600;
+    }
+  }
+
+  ul {
+    li {
+      a {
+        width: 100%;
+        color: $white;
+        padding: 1rem;
+        display: inline-block;
+
+        &:hover {
+          color: $secondary;
+          background-color: rgba($black, 0.1);
+        }
+      }
+
+      .toggle-btn {
+        color: $white;
+        float: right;
+        margin-left: 0.5em;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover .toggle-btn {
+        transform: rotate(45deg);
+      }
+
+      &:hover.has-submenu {}
+    }
+  }
+}
+
+.submenu-overlay {
+  position: fixed;
+  top: 0;
+  // left: 200px;
+  // width: calc(100% - 200px);
+  height: 100%;
+  z-index: 998;
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  padding: 5rem 2rem 2rem 2rem;
+  overflow-y: auto;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &:hover,
+  &:has(ul:hover) {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .submenu-close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+  }
+
+  ul {
+    list-style: none;
+    padding: 2rem 1rem;
+    margin: 0;
+
+    li {
+      padding: 0.75rem 0;
+      font-size: 1.1rem;
+
+      a {
+        color: #6f4e37;
+        text-decoration: none;
+
+        &:hover {
+          color: #000;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.mobile-action-bar {
+  display: none;
+
+  @include respond-max(md) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    z-index: 1050;
+    padding: 0.5em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+    justify-content: space-around;
+    align-items: center;
+
+    a.btn {
+      flex: 1 1 0;
+      font-size: 14px;
+      padding: 0.5em;
+      margin: 0 2px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+}
+
+.mobile-header-action-bar {
+  display: none;
+
+  @include respond-max(md) {
+    a.btn {
+      flex: 1;
+      font-size: 14px;
+      padding: 0.5em 0;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-room {
+      background-color: #000;
+    }
+
+    .btn-restaurant {
+      background-color: #6f4e37;
+    }
+
+    .btn-traffic {
+      background-color: #e0e0e0;
+    }
+  }
+
+  @include respond-max(sm) {
+    display: none;
+  }
+}
+
+@include respond-max(md) {
+  .gn-header {
+    padding-top: 60px;
+  }
+
+  .gn-header .action-buttons {
+    display: none !important;
+  }
+}
+
+@include respond-max(md) {
+  .gn-header {
+    padding: 0 1.6em;
+  }
+}
+
+@include respond-max(md) {
+  .gn-header .logo {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5em !important;
+
+    .text-logo {
+      display: flex !important;
+      flex-direction: column !important;
+      text-align: left !important;
+
+      .fw-bold {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+      }
+
+      .small {
+        font-size: 0.8rem !important;
+        color: #666 !important;
+      }
+    }
+  }
+}
+
+#headerSticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#headerSticky.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#headerMain {
+  transition: opacity 0.4s ease;
+}
+
+//每頁標題
+main {
+  .hd {
+    &.title {
+      position: relative;
+
+      h1,
+      p {
+        text-align: left;
+      }
+
+      h1 {
+        font-family: $font-family-en;
+        text-transform: uppercase;
+        @include title-animation(down, 1s, 0s); // 從上滑入
+      }
+
+      p {
+        color: $gray-secondary;
+        letter-spacing: 1em;
+        @include title-animation(left, 1.2s, 0.2s); // 從左滑入，稍慢
+      }
+
+      h2 {
+        float: right;
+        font-size: 3em;
+        color: rgba($primary, 0.2);
+        position: absolute;
+        top: 26%;
+        right: 0;
+        font-family: initial;
+      }
+    }
+  }
+
+  @include respond-max(sm) {
+    .hd {
+      &.title {
+        padding: 1em 1em 0 1em;
+
+        h2 {
+          font-size: 2.4em;
+          top: 104%;
+          right: 4%;
+          width: 100%;
+          text-align: right;
+        }
+      }
+    }
+
+  }
+}
+
+.mobile-bottom-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ccc;
+
+  .btn {
+    margin: 0 0.25rem;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    flex: 1;
+  }
+
+  .btn-bookroom {
+    background-color: $secondary03;
+    color: $white;
+  }
+
+  .btn-restaurant {
+    background-color: $secondary02;
+    color: $white;
+  }
+
+  .btn-member {
+    background-color: $secondary01;
+    color: $white;
+  }
+}
+
+// hambuger
+.ham {
+  cursor: pointer;
+  transition: transform 400ms;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+
+  &.hamRotate.active {
+    transform: rotate(45deg);
+  }
+
+  &.hamRotate180.active {
+    transform: rotate(180deg);
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.line {
+  fill: none;
+  stroke: $white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+}
+
+.ham1 .top {
+  stroke-dasharray: 40 139;
+}
+
+.ham1 .bottom {
+  stroke-dasharray: 40 180;
+}
+
+.ham1.active .top {
+  stroke-dashoffset: -98px;
+}
+
+.ham1.active .bottom {
+  stroke-dashoffset: -138px;
+}
+
+// 選單
+.main-menu ul.menu>li {
+  opacity: 0;
+}
+
+// 展開時觸發動畫（慢版）
+
+.main-menu.show ul.menu>li {
+  animation: fadeSlideIn 1s ease-out forwards;
+}
+
+.main-menu.show ul.menu>li:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.main-menu.show ul.menu>li:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.main-menu.show ul.menu>li:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.main-menu.show ul.menu>li:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.main-menu.show ul.menu>li:nth-child(5) {
+  animation-delay: 1.0s;
+}
+
+.main-menu.show ul.menu>li:nth-child(6) {
+  animation-delay: 1.2s;
+}

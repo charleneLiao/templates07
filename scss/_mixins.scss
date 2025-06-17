@@ -1,0 +1,263 @@
+// // _mixins.scss RWD
+@use './breakpoints' as *;
+@use './variables' as *;
+
+// 偽元素
+@mixin shared-after-shadow {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: none;
+  transition: box-shadow 0.3s;
+  z-index: 0;
+  height: 20px;
+  width: 20px;
+  background-color: $logoBlueLight;
+  border-radius: 1em;
+  z-index: -1;
+}
+
+@mixin dateBomLine {
+  content: "";
+  border-bottom: 1px solid $primary-light-color;
+  width: calc(100% - 31px);
+  display: flex;
+  position: absolute;
+  left: 16px;
+  top: 95px;
+}
+
+// 輪播左右箭頭
+@mixin arrow {
+  position: absolute;
+  font-size: 2.4em;
+  color: rgba($white, 0.8);
+  text-shadow: 0px 0px 10px $black;
+  z-index: 2;
+  top: 5.7em;
+  padding: 0.6em 0.2em;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: rgba($Secondary_base, 0.8);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0px 0px 8px rgba($black, 0.5) inset;
+  }
+}
+
+@mixin border {
+  border: 1px solid $Grayscale_700;
+  border-radius: 0.2em;
+}
+
+@mixin respond-max($breakpoint) {
+  // 判斷傳入的是數字還是 key（字串）
+  $size: if(type-of($breakpoint)=='number', $breakpoint, map-get($breakpoints, $breakpoint));
+
+  @if $size {
+    @media (max-width: $size + px) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "⚠️ Breakpoint `#{$breakpoint}` not found or invalid!";
+  }
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.container-in {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2em auto;
+
+  @include respond-max(sm) {
+    padding: 0 1.5em;
+  }
+
+  .swiperWrap {
+    width: 100%;
+  }
+}
+
+[class^="col-"] img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.col-100 {
+  width: 100%;
+  // display: flex;
+}
+
+.col-50 {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include respond-max(lg) {
+    width: 100%;
+  }
+}
+
+// 格柵系統
+.grid-row {
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px; // 欄與欄之間的間距
+  // margin-bottom: 24px;
+  display: inline-grid;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+// ul
+@mixin ul-base {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    width: calc(50% - 16px);
+    padding-left: 23px;
+    box-sizing: border-box;
+    font-size: $font-m;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: -6px;
+      color: #2ec49c; // 綠色圓點
+      font-size: 1.5em;
+    }
+  }
+
+  // 手機版一行一筆
+  @include respond-max("md") {
+    li {
+      width: 100%;
+    }
+  }
+}
+
+
+.btn-more {
+  margin-top: 16px;
+}
+
+// 欄位寬度 col-1 ~ col-12
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
+
+// 響應式：手機版單欄排版（可選）
+@media (max-width: 768px) {
+  .grid-row {
+    grid-template-columns: repeat(1, 1fr); // 變成一欄
+  }
+
+  // 所有欄位都改為單欄
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      grid-column: span 1;
+    }
+  }
+}
+
+// Model
+// 表單用
+.wide-modal-s {
+  max-width: 1000px;
+  width: 90%;
+}
+
+.container .row {
+  flex: 0 0 calc(50% - 12px);
+  gap: 0;
+}
+
+@include respond-max(md) {
+  .row.row-cols-md-2.g-4>.col {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+  }
+
+  .container .row {
+    flex: 0 0 calc(50% - 12px);
+    gap: 0;
+  }
+  .container{
+    width: 100%;
+    max-width: 100%;
+    padding: 1em;
+  }
+}
+
+@mixin title-animation($direction: down, $duration: 1s, $delay: 0s) {
+  opacity: 0;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+
+  @if $direction == down {
+    animation-name: slideDownFade;
+  } @else if $direction == left {
+    animation-name: slideLeftFade;
+  } @else if $direction == right {
+    animation-name: slideRightFade;
+  } @else if $direction == up {
+    animation-name: slideUpFade;
+  }
+}
+
+// 🔁 動畫底線從中間向外展開 @include underline-hover($secondary01);
+@mixin underline-hover($color: currentColor, $height: 2px, $duration: 0.4s) {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.3em;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    transition: transform $duration ease;
+  }
+
+  &:hover {
+    color: $color;
+    background-color: transparent;
+
+    &::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+}
+

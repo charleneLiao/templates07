@@ -1,0 +1,8 @@
+# Ignore all Markdown files
+*.md
+
+# But keep the main README file
+!README.md
+
+# 忽略整個 doc 資料夾（包含裡面的所有內容）
+doc/

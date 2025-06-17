@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESTO HOTEL</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <link rel="stylesheet" href="fonts/fontawesome/css/all.css">
+  <link href="path-to-fontawesome/css/light.min.css" rel="stylesheet">
+
+
+  <!-- 第三方 JS（不建議用 defer）-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
+</head>
+
+
+<body>
+  <main>
+    <div id="headerComponent"></div>
+    <div id="bannerComponent"></div> <!-- 大廣告 -->
+    <div id="bookingBarComponent"></div> <!-- 日期訂房器 -->
+    <div id="ourStoryComponent"></div> <!-- 我們的介紹 -->
+    <div id="specialOffersComponent"></div> <!--優惠活動 -->
+    <div id="popularRoomsComponent"></div> <!--熱門房型 -->
+    <div id="diningFacilitiesComponent"></div> <!--餐飲設施 -->
+    <div id="footerComponent"></div>
+    <div id="loginComponent"></div>
+  </main>
+  <script src="js/vue.global.prod.js"></script>
+
+  <!-- 所有元件 -->
+  <script src="js/modules/headerComponent.js"></script>
+  <script src="js/modules/footerComponent.js"></script>
+  <script src="js/modules/loginComponent.js"></script>
+  <!-- ✅ Bootstrap 最後載入（modal 需在 modal HTML 插入後載入） -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- ✅ 初始化放這裡，確保所有內容都插入、Bootstrap 也就緒 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 插入所有模組
+      window.loadHeader?.();
+      window.loadFooter?.();
+      window.loadLoginComponent?.(); 
+
+      // 點擊桌機「加入會員」
+      document.getElementById("openMemberModalBtn")?.addEventListener("click", function () {
+        if (typeof window.loadLoginModal === "function") loadLoginModal();
+      });
+
+      // 點擊手機版底部「加入會員」
+      document.getElementById("openMemberModalBtnMobile")?.addEventListener("click", function () {
+        if (typeof window.loadLoginModal === "function") loadLoginModal();
+      });
+    });
+
+  </script>
+
+  <!-- 其餘功能 -->
+  <script src="js/data/roomIntro.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/tools/goTop.js" defer></script>
+
+
+
+</body>
+
+</html>
