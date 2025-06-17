@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await loadScript("js/modules/bookingBarComponent.js");
         await loadScript("js/modules/ourStoryComponent.js");
         await loadScript("js/modules/specialOffersComponent.js");
+        await loadScript("js/modules/parallaxImageComponent.js");
         await loadScript("js/modules/popularRoomsComponent.js");
         await loadScript("js/modules/diningFacilitiesComponent.js");
         await loadScript("js/modules/footerComponent.js");
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.loadBookingBar?.();
         window.loadourStory?.();
         window.loadSpecialOffers?.();
+        window.loadParallaxImage?.();
         window.loadPopularRooms?.();
         window.loadDiningFacilities?.();
         window.loadFooter?.();

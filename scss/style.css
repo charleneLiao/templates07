@@ -332,6 +332,19 @@ section {
   padding: 2em 0;
 }
 
+#parallaxImageComponent {
+  background-color: rgb(115, 255, 0);
+}
+#parallaxImageComponent .parallax-image {
+  height: 60vh;
+  background-image: url("images/banner/BannerPhoto01.jpg");
+  /* 替換為你的圖片路徑 */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @keyframes slideDownFade {
   0% {
     opacity: 0;
