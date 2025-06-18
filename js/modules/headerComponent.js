@@ -197,4 +197,23 @@ window.loadHeader = function () {
       }
     });
   }
+
+  // ✅ 手機版客房預訂按鈕點擊展開 booking bar
+const bookroomBtn = mobileBtns.querySelector(".btn-bookroom");
+const bookingBar = document.getElementById("bookingBarComponent");
+
+if (bookroomBtn && bookingBar) {
+  bookroomBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // 切換顯示/隱藏
+    bookingBar.classList.toggle("active");
+
+    // 如果展開了就滑動到 booking bar
+    if (bookingBar.classList.contains("active")) {
+      bookingBar.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}
+
 };

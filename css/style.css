@@ -256,6 +256,11 @@ a {
   opacity: 1;
   visibility: visible;
 }
+@media (max-width: 576px) {
+  #scrollToTopBtn {
+    bottom: 5rem;
+  }
+}
 
 .hd-title {
   display: inline-flex;
@@ -1039,34 +1044,36 @@ main .hd.title h2 {
 
 .mobile-bottom-buttons {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  display: flex;
+  top: 10vh;
+  left: 0.5em;
   z-index: 1050;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  background: #fff;
-  padding: 0.5rem 0.75rem;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  border-top: 1px solid #ccc;
+  gap: 1em;
 }
 .mobile-bottom-buttons .btn {
+  width: 100%;
   margin: 0 0.25rem;
-  font-size: 0.95rem;
-  padding: 0.5rem 0;
+  padding: 0.8em 1.6em;
   flex: 1;
+  font-size: 1.2em;
+  border-radius: 2em;
 }
 .mobile-bottom-buttons .btn-bookroom {
   background-color: #144747;
-  color: #ffffff;
+  border: 1px solid #f0e1d5;
+  color: #f0e1d5;
 }
 .mobile-bottom-buttons .btn-restaurant {
   background-color: rgba(42, 24, 24, 0.9294117647);
-  color: #ffffff;
+  color: #f0e1d5;
 }
 .mobile-bottom-buttons .btn-member {
-  background-color: #c2d3af;
-  color: #ffffff;
+  background-color: #f0e1d5;
+  border: 1px solid #1d3c33;
+  color: #1d3c33;
 }
 
 .ham {
@@ -1144,7 +1151,7 @@ main .hd.title h2 {
   animation-delay: 1.2s;
 }
 
-.bookingBarComponent {
+#bookingBarComponent {
   position: absolute;
   width: 780px;
   bottom: 8em;
@@ -1157,11 +1164,14 @@ main .hd.title h2 {
   border-radius: 3em;
   padding: 0.4em 0 0.4em 1.5em;
 }
-.bookingBarComponent .container {
+#bookingBarComponent section {
+  padding: 0;
+}
+#bookingBarComponent .container {
   padding: 0;
   margin: 0;
 }
-.bookingBarComponent .action {
+#bookingBarComponent .action {
   background-color: #ffffff;
   border-radius: 8em;
   outline: none;
@@ -1171,71 +1181,71 @@ main .hd.title h2 {
   font-size: 0.7em;
   padding: 0.2em 0.5em;
 }
-.bookingBarComponent .action:hover {
+#bookingBarComponent .action:hover {
   background-color: #f0e1d5;
 }
-.bookingBarComponent .col-md-6,
-.bookingBarComponent .col-md-2 {
+#bookingBarComponent .col-md-6,
+#bookingBarComponent .col-md-2 {
   border-right: 1px solid #a7a6a1;
 }
-.bookingBarComponent .col-md-6:last-child,
-.bookingBarComponent .col-md-2:last-child {
+#bookingBarComponent .col-md-6:last-child,
+#bookingBarComponent .col-md-2:last-child {
   border-right: none;
 }
-.bookingBarComponent .col-md-2 {
+#bookingBarComponent .col-md-2 {
   padding: 0 0.8em;
 }
-.bookingBarComponent i {
+#bookingBarComponent i {
   color: #1d3c33;
   font-size: 1.5em;
   margin-right: 8px;
 }
-.bookingBarComponent .flatpickr {
+#bookingBarComponent .flatpickr {
   color: #1d3c33;
   border: none;
   letter-spacing: 1px;
   padding: 0 0.5em;
   border-radius: 1em;
 }
-.bookingBarComponent .flatpickr:focus-visible, .bookingBarComponent .flatpickr:hover {
+#bookingBarComponent .flatpickr:focus-visible, #bookingBarComponent .flatpickr:hover {
   outline: none;
   background-color: #f0e1d5;
 }
-.bookingBarComponent input[type=date] {
+#bookingBarComponent input[type=date] {
   font-size: 1.25rem;
   font-weight: bold;
   text-align: center;
   border: none;
   background-color: transparent;
 }
-.bookingBarComponent .hd {
+#bookingBarComponent .hd {
   background-color: #e7e3d5;
   padding: 0.5em;
   color: #1d3c33;
 }
-.bookingBarComponent .btn {
+#bookingBarComponent .btn {
   padding: 0;
 }
-.bookingBarComponent .btn-link,
-.bookingBarComponent .btn.rounded-circle {
+#bookingBarComponent .btn-link,
+#bookingBarComponent .btn.rounded-circle {
   font-size: 1.5rem;
   color: #000;
   text-decoration: none;
   background-color: #ffffff;
 }
-.bookingBarComponent .btn-link:hover,
-.bookingBarComponent .btn.rounded-circle:hover {
+#bookingBarComponent .btn-link:hover,
+#bookingBarComponent .btn.rounded-circle:hover {
   color: #555;
 }
-.bookingBarComponent .btn-dark {
+#bookingBarComponent .btn-dark {
   border-radius: 2em;
   padding: 0.3em 2.2em;
 }
-.bookingBarComponent .row {
+#bookingBarComponent .row {
   gap: 0;
   align-items: center;
 }
-.bookingBarComponent .row > div {
+#bookingBarComponent .row > div {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1243,7 +1253,7 @@ main .hd.title h2 {
   height: 100%;
   min-width: 0;
 }
-.bookingBarComponent .btn.rounded-circle {
+#bookingBarComponent .btn.rounded-circle {
   width: 36px;
   height: 36px;
   padding: 0;
@@ -1251,52 +1261,71 @@ main .hd.title h2 {
   line-height: 1;
   text-align: center;
 }
-.bookingBarComponent .inoutbox {
+#bookingBarComponent .inoutbox {
   padding: 0.5em;
 }
 @media (max-width: 768px) {
-  .bookingBarComponent {
+  #bookingBarComponent {
     width: 84vw;
     padding: 1em;
     bottom: 1em;
     border-radius: 1em;
   }
-  .bookingBarComponent .row {
+  #bookingBarComponent .row {
     gap: 0.9em;
     align-items: center;
     text-align: center;
   }
-  .bookingBarComponent .row .flatpickr {
+  #bookingBarComponent .row .flatpickr {
     padding: 0.5em 1em;
     width: 82%;
   }
-  .bookingBarComponent .row .action {
+  #bookingBarComponent .row .action {
     font-size: 1.3em;
   }
-  .bookingBarComponent .row #childCount, .bookingBarComponent .row #adultCount {
+  #bookingBarComponent .row #childCount,
+  #bookingBarComponent .row #adultCount {
     margin: 0 5px;
   }
-  .bookingBarComponent .row .btn-dark {
+  #bookingBarComponent .row .btn-dark {
     padding: 0.8em 2.5em;
   }
-  .bookingBarComponent .col-md-4 {
+  #bookingBarComponent .col-md-4 {
     width: 100%;
     max-width: 100%;
   }
-  .bookingBarComponent .col-md-3,
-  .bookingBarComponent .col-md-2 {
+  #bookingBarComponent .col-md-3,
+  #bookingBarComponent .col-md-2 {
     width: 30%;
   }
-  .bookingBarComponent .glow-btn {
+  #bookingBarComponent .glow-btn {
     width: 100%;
   }
 }
 @media (max-width: 576px) {
-  .bookingBarComponent .col-md-3,
-  .bookingBarComponent .col-md-2 {
+  #bookingBarComponent {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    pointer-events: none;
+    position: fixed;
+    bottom: 0;
+    left: 8%;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+  #bookingBarComponent.active {
+    opacity: 1;
+    transform: translateY(0%);
+    pointer-events: auto;
+  }
+  #bookingBarComponent .col-md-3,
+  #bookingBarComponent .col-md-2 {
     width: 100%;
   }
-  .bookingBarComponent .inoutbox {
+  #bookingBarComponent .inoutbox {
     padding: 0.5em;
   }
 }
@@ -1589,6 +1618,9 @@ main .hd.title h2 {
   .bannerComponent .text-muted {
     bottom: 33%;
     left: -45%;
+  }
+  .bannerComponent .slider-controls {
+    right: 5px;
   }
 }
 
@@ -2921,6 +2953,9 @@ span.flatpickr-weekday,
   }
 }
 @media (max-width: 576px) {
+  .footerComponent {
+    padding-bottom: 5em;
+  }
   .footerComponent .d-flex {
     display: inline-block !important;
     width: 100%;

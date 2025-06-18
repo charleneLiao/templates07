@@ -1,4 +1,6 @@
-@import './variables';
+@use './variables' as *;
+@use './breakpoints' as *;
+@use './mixins' as *;
 
 a {
   color: $text-color;
@@ -37,6 +39,9 @@ a {
   &.show {
     opacity: 1;
     visibility: visible;
+  }
+  @include respond-max(sm){
+     bottom: 5rem;
   }
 }
 

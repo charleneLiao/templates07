@@ -3,7 +3,7 @@ window.loadBookingBar = function () {
   if (!target) return;
 
   target.innerHTML = `
-    <section class="bookingBarComponent">
+    <section class="bookingBarComponent" data-aos="zoom-in">
       <div class="container">
         <div class="row">
           <!-- 入住 -->

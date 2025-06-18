@@ -164,6 +164,7 @@
   }
 
   @include respond-max(sm) {
+    padding-bottom: 5em;
     .d-flex {
       display: inline-block !important;
       width: 100%;
