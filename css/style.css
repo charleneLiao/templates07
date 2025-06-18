@@ -821,6 +821,12 @@ section {
 .main-menu ul li:hover .toggle-btn {
   transform: rotate(45deg);
 }
+@media (max-width: 576px) {
+  .main-menu {
+    width: 100%;
+  }
+}
+
 .submenu-overlay {
   position: fixed;
   top: 0;

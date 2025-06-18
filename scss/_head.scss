@@ -225,6 +225,9 @@
       &:hover.has-submenu {}
     }
   }
+@include respond-max(sm){
+  width: 100%;
+}
 }
 
 .submenu-overlay {
