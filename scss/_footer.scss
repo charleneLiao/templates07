@@ -136,12 +136,44 @@
     gap: 2em;
     color: $primary;
     justify-content: space-between;
-    span{
-      a{
+
+    span {
+      a {
         padding: 0 1em;
         color: $primary;
       }
     }
   }
 
+  @include respond-max(md) {
+    padding: 2em 1em;
+
+    .col-md-3 {
+      width: 50%;
+    }
+
+    .row-policy {
+      display: block;
+
+      .mb-1,
+      .mb-2 {
+        width: 100%;
+      }
+    }
+
+  }
+
+  @include respond-max(sm) {
+    .d-flex {
+      display: inline-block !important;
+      width: 100%;
+      padding: 0.5em;
+
+      .group-column {
+        float: left;
+        width: 50%;
+        border-right:none;
+      }
+    }
+  }
 }

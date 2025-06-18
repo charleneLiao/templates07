@@ -44,87 +44,15 @@ a {
   // padding: 0.5em 0 0.8em 0;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   color: $text-color;
   letter-spacing: 0.1em;
   position: relative;
-  font-size: 2em;
   width: 100%;
   font-family: "system-ui", serif;
-
-  &::before,
-  &::after {
-    content: '';
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    width: 35px;
-    height: 35px;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  &::after {
-    background-image: url('../images/icon-title-r.svg');
-    margin-left: 1.9em;
-  }
-
-  &::before {
-    content: '';
-    display: inline-flex;
-    gap: 4px;
-    background-image: url('../images/icon-title-l.svg');
-    margin-right: 1.5em;
-
-    &::before,
-    &::after,
-    span {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      background: #aaa;
-    }
-
-    &::before {
-      height: 20px;
-    }
-
-    &::after {
-      height: 12px;
-    }
-
-    span {
-      height: 16px;
-    }
-  }
-
-  &::after {
-    content: '';
-    display: inline-flex;
-    gap: 4px;
-
-    &::before,
-    &::after,
-    span {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      background: #aaa;
-    }
-
-    &::before {
-      height: 20px;
-    }
-
-    &::after {
-      height: 12px;
-    }
-
-    span {
-      height: 16px;
-    }
-  }
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 1em;
 }
 
 #specialOffersComponent {}
@@ -134,10 +62,9 @@ section {
 }
 
 #parallaxImageComponent {
-  background-color: rgb(115, 255, 0);
   .parallax-image {
     height: 60vh;
-    background-image: url('images/banner/BannerPhoto01.jpg');
+    background-image: url('/images/banner/BannerPhoto01.jpg');
     /* 替換為你的圖片路徑 */
     background-attachment: fixed;
     background-size: cover;
@@ -145,3 +72,6 @@ section {
     background-repeat: no-repeat;
   }
 }
+
+// 表頭
+#popularRoomsComponent {}

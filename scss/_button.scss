@@ -186,3 +186,8 @@
         transform: translateX(-50%) scaleX(1);
     }
 }
+.btn-primary-border{
+    background-color: $transparent;
+    color: $primary;
+    border: 1px solid $primary;
+}

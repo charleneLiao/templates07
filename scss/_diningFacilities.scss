@@ -1,53 +1,54 @@
+@use './variables' as *;
+@use './breakpoints' as *;
+@use './mixins' as *;
+@use './animations' as *;
+
 .diningFacilitiesComponent {
-    .container-fluid {
-        .marquee-wrapper {
-            ul {
-                padding: 0;
-                list-style: none;
-            }
+    background-color: $primary;
+    padding: 2em 0 4.3em 0;
 
-            overflow: hidden;
+    .container {
+        .hd-title{
+            color: $white;
+        }
+        .food-card {
             position: relative;
-            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
 
-            .marquee {
-                display: flex;
-                width: max-content; // 重要：寬度根據內容自動延展
-                animation: scroll-left 60s linear infinite;
-
-                li {
-                    flex: 0 0 auto;
-
-                    img {
-                        width: 330px;
-                        height: auto;
-                        object-fit: cover;
-                        max-width: unset; // 移除 img-fluid 限制
-                        display: block;
-                    }
-                }
+            img {
+                transition: transform 0.4s ease;
             }
 
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
-                }
+            .food-overlay {
+                position: absolute;
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
 
-                100% {
-                    transform: translateX(-50%);
-                }
+            &:hover img,
+            &.active img {
+                transform: scale(1.05);
+            }
+
+            &:hover .food-overlay,
+            &.active .food-overlay {
+                opacity: 1;
             }
         }
+
     }
 }
-
 
 // 設施一覽
 #facility {
     .facility-block {
         position: relative;
         margin-bottom: 5rem;
-        .im-left{
+
+        .im-left {
             z-index: 10;
         }
 

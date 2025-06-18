@@ -5,7 +5,7 @@ window.loadourStory = function () {
   target.innerHTML = `<section class="ourStoryComponent">
   <div class="container-fluid bg-fluidSecondary">
    <div class="row flex flex-wrap items-center justify-center">
-    <div class="col w-full md:w-8/12 xl:w-6/12 t-left">
+    <div class="col w-full md:w-8/12 xl:w-6/12 t-left" data-aos="fade-up" data-aos-duration="3000">
         <h3 class="t-h1"></h3>
         <h1>TESTO: 永續生活風格飯店</h1>
         <p class="t-h4 mt-xs"></p>

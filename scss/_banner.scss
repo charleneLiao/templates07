@@ -12,7 +12,7 @@
     position: absolute;
     z-index: 3;
     width: 10em;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: $secondary;
@@ -80,9 +80,10 @@
 
     &.slick-active button .dot {
       opacity: 1;
-      background-color:$secondary;
+      background-color: $secondary;
     }
   }
+
   .hero-bg-wrap {
     width: 100vw; // 或指定寬高
     height: 100vh; // 建議固定高度，否則看不到效果
@@ -221,6 +222,15 @@
     object-position: center;
     width: 100%;
     flex-shrink: 0;
+  }
+
+  @include respond-max(md) {
+    .slick-dots-wrapper {
+      bottom: 0;
+    }
+    .slider-controls {
+      bottom: 1.5em;
+    }
   }
 
   @include respond-max(sm) {

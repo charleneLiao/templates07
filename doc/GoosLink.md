@@ -29,6 +29,10 @@ https://www.minorhotels.com/en/destinations/switzerland/geneva/nh-geneva-airport
 日期排版 紫灰
 https://www.warwickhotels.com/?_gl=1*1jhn6dy*_up*MQ..&gclid=CjwKCAjwpMTCBhA-EiwA_-MsmbCMg41c_szX_Z7CErvHwJhsRvV0KgLbZnMOWTeC1c25xE3ofDDjHRoCBLUQAvD_BwE
 
+泰國 色系 照片
+https://www.mandarinoriental.com/en/bangkok/chao-phraya-river/stay
+
+
 
 漂亮訂房頁
 https://be.synxis.com/?_gl=1*18a35bj*_ga*MTE0MTk2NDkwOC4xNzUwMTUxNjc4*_ga_X7ZQW2G86S*czE3NTAxNTE2NzckbzEkZzEkdDE3NTAxNTE5NDYkajU3JGwwJGgw&adult=1&arrive=2025-06-18&chain=21125&child=0&currency=TWD&depart=2025-06-19&hotel=3618&level=hotel&locale=zh-TW&productcurrency=TWD&rooms=1

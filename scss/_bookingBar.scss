@@ -134,7 +134,55 @@
     padding: 0.5em;
   }
 
+  @include respond-max(md) {
+    width: 84vw;
+    padding: 1em;
+    bottom: 1em;
+    border-radius: 1em;
+
+    .row {
+      // flex-direction: column;
+      gap: 0.9em;
+      align-items: center;
+      text-align: center;
+
+      .flatpickr {
+        padding: 0.5em 1em;
+        width: 82%;
+      }
+
+      .action {
+        font-size: 1.3em;
+      }
+      #childCount, #adultCount{
+        margin: 0 5px;
+      }
+      .btn-dark{
+        padding: 0.8em 2.5em;
+      }
+    }
+
+    .col-md-4 {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .col-md-3,
+    .col-md-2 {
+      width: 30%;
+    }
+
+    .glow-btn {
+      width: 100%;
+    }
+  }
+
   @include respond-max(sm) {
+    .col-md-3,
+    .col-md-2 {
+      width: 100%;
+    }
+
     .inoutbox {
       padding: 0.5em;
     }

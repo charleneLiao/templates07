@@ -5,6 +5,7 @@
 
 #ourStoryComponent {
     color: $primary;
+
     section {
         padding: 0;
     }
@@ -12,9 +13,23 @@
     .bg-fluidSecondary {
         background-color: $secondary;
         padding: 4em 3em;
-        .flex-wrap{
+        .c-richText{
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .flex-wrap {
             width: 50%;
             margin: 0 auto;
+        }
+    }
+
+    @include respond-max(md) {
+        .bg-fluidSecondary {
+            padding: 2em;
+            .flex-wrap {
+                width: 90vw;
+            }
         }
     }
 }

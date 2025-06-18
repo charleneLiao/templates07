@@ -7,3 +7,6 @@ git remote add origin https://github.com/charleneLiao/templates07.git
 git push -u origin main
 
 git status 
+git add .
+git commit -m "2"
+git push

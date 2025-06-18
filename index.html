@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   <link rel="stylesheet" href="fonts/fontawesome/css/all.css">
   <link href="path-to-fontawesome/css/light.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 
 
   <!-- 第三方 JS（不建議用 defer）-->
@@ -27,13 +30,13 @@
 <body>
   <main>
     <div id="headerComponent"></div>
-    <div id="bannerComponent"></div> <!-- 大廣告 -->
-    <div id="bookingBarComponent"></div> <!-- 日期訂房器 -->
-    <div id="ourStoryComponent"></div> <!-- 我們的介紹 -->
-    <div id="specialOffersComponent"></div> <!--優惠活動 -->
-    <div id="parallaxImageComponent"></div> <!--精美插圖 -->
-    <div id="popularRoomsComponent"></div> <!--熱門房型 -->
-    <div id="diningFacilitiesComponent"></div> <!--餐飲設施 -->
+    <div id="bannerComponent"></div>
+    <div id="bookingBarComponent"></div>
+    <div id="ourStoryComponent"></div>
+    <div id="specialOffersComponent"></div> 
+    <div id="parallaxImageComponent"></div> 
+    <div id="popularRoomsComponent"></div> 
+    <div id="diningFacilitiesComponent"></div>
     <div id="footerComponent"></div>
     <div id="loginComponent"></div>
   </main>
@@ -71,9 +74,11 @@
   <script src="js/data/roomIntro.js"></script>
   <script src="js/main.js" defer></script>
   <script src="js/tools/goTop.js" defer></script>
-
-
-
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 
 </html>
