@@ -14,6 +14,11 @@ a {
 .container-fluid {
   padding: 0;
 }
+.container{
+  @include respond-max(md) {
+    padding: 0 1em;
+  }
+}
 
 #scrollToTopBtn {
   border: 1px solid $primary;

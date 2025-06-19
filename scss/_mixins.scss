@@ -191,10 +191,11 @@
   max-width: 1000px;
   width: 90%;
 }
-
+.col {
+  width: calc((100% - 50px) / 3) !important;
+}
 .container .row {
-  flex: 0 0 calc(50% - 12px);
-  gap: 0;
+flex: 0 0 calc(50% - 30px);
 }
 
 @include respond-max(md) {
@@ -205,7 +206,7 @@
 
   .container .row {
     flex: 0 0 calc(50% - 12px);
-    gap: 0;
+    // gap: 0;
   }
   .container{
     width: 100%;
@@ -241,7 +242,7 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 0.3em;
+    bottom: 0em;
     left: 50%;
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;

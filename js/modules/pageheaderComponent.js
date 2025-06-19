@@ -1,5 +1,5 @@
-window.loadHeader = function () {
-  const container = document.getElementById("headerComponent");
+window.loadpageHeader = function () {
+  const container = document.getElementById("pageHeaderComponent");
   if (!container) return;
 
   // Create headerMain and headerSticky
@@ -168,52 +168,5 @@ window.loadHeader = function () {
       if (label) label.textContent = nav.classList.contains("show") ? "關閉" : "菜單";
     }
   });
-
-  // 加入會員按鈕（桌機）
-  const desktopBtn = document.getElementById("openMemberModalBtn");
-  if (desktopBtn) {
-    desktopBtn.addEventListener("click", function () {
-      if (typeof window.loadLoginModal === "function") {
-        window.loadLoginModal();
-      }
-    });
-  }
-
-  // ✅ 插入手機按鈕
-  const mobileBtns = document.createElement("div");
-  mobileBtns.className = "mobile-bottom-buttons";
-  mobileBtns.innerHTML = `
-    <a href="booking.html" class="btn btn-bookroom flex-fill">客房預訂</a>
-    <button class="btn btn-member flex-fill" id="openMemberModalBtnMobile">加入會員</button>
-  `;
-  document.body.appendChild(mobileBtns);
-
-  // ✅ 等 append 完再抓
-  const mobileBtn = mobileBtns.querySelector("#openMemberModalBtnMobile");
-  if (mobileBtn) {
-    mobileBtn.addEventListener("click", function () {
-      if (typeof window.loadLoginModal === "function") {
-        window.loadLoginModal();
-      }
-    });
-  }
-
-  // ✅ 手機版客房預訂按鈕點擊展開 booking bar
-const bookroomBtn = mobileBtns.querySelector(".btn-bookroom");
-const bookingBar = document.getElementById("bookingBarComponent");
-
-if (bookroomBtn && bookingBar) {
-  bookroomBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // 切換顯示/隱藏
-    bookingBar.classList.toggle("active");
-
-    // 如果展開了就滑動到 booking bar
-    if (bookingBar.classList.contains("active")) {
-      bookingBar.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-}
 
 };

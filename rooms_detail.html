@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTO HOTEL</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- 主樣式 -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- 外掛樣式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css'>
+
+
+
+    <!-- 外掛 JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh.js"></script>
+
+    <!-- 自訂功能 -->
+    <script src="js/include.js" defer></script>
+    <script src="js/tools/goTop.js" defer></script>
+    <script src="js/tools/toggle.js" defer></script>
+    <script src="js/modules/headerComponent.js" defer></script>
+    <script src="js/modules/pageheaderComponent.js" defer></script>
+    <script src="js/modules/footerComponent.js" defer></script>
+    <script src="js/data/precautions.js" defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof loadpageHeader === "function") loadpageHeader();
+            if (typeof loadFooter === "function") loadFooter();
+            if (typeof loadprecautions === "function") loadprecautions();
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div id="pageHeaderComponent"></div>
+
+    <main>
+        <div id="rooms">
+            <div class="container-fluid">
+                <div class="in">
+                    <div id="detail" class="clearfix">
+                        <section class="section slider-section">
+                            <div class="container-fluid slider-column">
+                                <div class="swiper swiper-slider">
+                                    <div class="swiper-wrapper">
+                                        <img class="swiper-slide" src="images/room/room-bath.jpg" alt="Swiper">
+                                        <img class="swiper-slide" src="images/room/room-vip.jpg" alt="Swiper">
+                                        <img class="swiper-slide" src="images/room/room-vip05.jpg" alt="Swiper">
+                                        <img class="swiper-slide" src="images/room/room-bath.jpg" alt="Swiper">
+                                        <img class="swiper-slide" src="images/room/room-vip.jpg" alt="Swiper">
+                                        <img class="swiper-slide" src="images/room/room-vip05.jpg" alt="Swiper">
+                                    </div>
+                                    <span class="swiper-pagination"></span>
+                                    <span class="swiper-button-prev"></span>
+                                    <span class="swiper-button-next"></span>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 標題 -->
+                          <div class="container mt-3">
+                            <div class="hd title text-center mb-4">
+                                <h1>豪華房 寬敞舒適好品味</h1>
+                                <p>寬敞的客房配有沙發和休息區，可供客人放鬆身心，提供木地板和自然風格的地毯以及具有豪華風格的家具，讓您在度假村風格的氛圍中享受獨特的體驗，並欣賞河流和城市的美景。</p>
+                            </div>
+                           <section class="booking">
+                            <div class="container">
+                               <div class="booking-row">
+                                <div class="booking-col">
+                                    <label for="bedTypes">床型選擇</label>
+                                    <select id="bedTypes" name="bedType">
+                                    <option value="RO3K">一大床</option>
+                                    <option value="RO3T">雙人床</option>
+                                    </select>
+                                </div>
+                                <div class="booking-col">
+                                    <label class="invisible-label">預定</label>
+                                    <button class="booking-activator">預定房間</button>
+                                </div>
+                                </div>
+                            </div>
+                            </section>
+                            </div>
+                        <!-- 下方內容 -->
+                        <div class="container-fluid detailArea">
+                            <div class="container">
+                            <div class="row">
+                                <!-- 左側 9 欄：基本介紹 + 飯店基本資料 -->
+                                <div class="col-md-12 col-lg-12">
+                                    <section>
+                                        <div class="fancy-title">詳細介紹</div>
+                                        <p class="mb-4">
+                                            這些 43 平方米的客房位於河景，每間均配有寬大沙發，可供您放鬆身心，欣賞河景和泳池美景。客房裝飾靈感河畔的日常生活，鋪設木地板，並融入經典元素，例如柚木家具和精美的絲綢面料。牆上則裝飾著酒店豐富的藝術收藏中的精選版畫。客房提供加大雙人床和雙人床兩種選擇。
+                                        </p>
+                                            <div class="" id="cardContainer"></div>
+                                    </section>
+                                    <div class="" id="precautions"></div>
+                                </div>
+                                <!-- 右側 3 欄：價格與圖片 -->
+                                <div class="col-md-12 col-lg-12 mb-5">
+                                    <div class="fancy-title">房內設備</div>
+                                    <div class="list-stuff">
+                                        <ul>
+                                            <li>Nespresso咖啡機</li>
+                                            <li>迎賓飲料&amp;甜點</li>
+                                            <li>電熱水壺</li>
+                                            <li>餐具（茶杯等）</li>
+                                            <li>開瓶器</li>
+                                            <li>冰箱</li>
+                                            <li>吹風機</li>
+                                            <li>洗面奶和洗手液</li>
+                                            <li>保險箱</li>
+                                            <li>空氣清淨機</li>
+                                            <li>免費Wi-Fi</li>
+                                            <li>報紙</li>
+                                            <li>薄型電視</li>
+                                            <li>除臭噴霧</li>
+                                            <li>鞋拔</li>
+                                            <li>衣架</li>
+                                            <li>衣刷</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </main>
+    </div>
+    </div>
+    </div>
+    </div>
+    </main>
+
+    <div id="footerComponent"></div>
+</body>
+<script src='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js'></script>
+<script src="js/swiper.js"></script>
+<script>
+    const items = [
+        { icon: 'fa-store', label: '商店' },
+        { icon: 'fa-utensils', label: '餐廳' },
+        { icon: 'fa-mug-saucer', label: '咖啡廳' },
+        { icon: 'fa-dumbbell', label: '健身房' },
+        { icon: 'fa-spa', label: 'SPA' },
+        { icon: 'fa-swimmer', label: '游泳池' },
+        { icon: 'fa-wifi', label: '免費WIFI' },
+        { icon: 'fa-user-tie', label: '24小時櫃台服務' },
+        { icon: 'fa-square-parking', label: '停車場' },
+        { icon: 'fa-bath', label: '三溫暖' },
+        { icon: 'fa-children', label: '適合兒童' },
+    ];
+
+    const container = document.getElementById('cardContainer');
+
+    items.forEach((item, index) => {
+        container.innerHTML += `
+        <div class="">
+          <div class="card">
+            <div class="icon-circle">
+              <i class="fa-solid ${item.icon}"></i>
+            </div>
+            <h6 class="mb-1">${item.label}</h6>
+          </div>
+        </div>
+      `;
+    });
+</script>
+
+
+</html>

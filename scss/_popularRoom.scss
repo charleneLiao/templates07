@@ -43,9 +43,6 @@
 
   .swiper {
     height: 640px;
-
-    .swiper-button-next,
-    .swiper-button-prev {}
   }
 
   .swiper-slide {
@@ -86,7 +83,7 @@
     align-items: center;
 
     img {
-      width: 100%;
+      width: 100%; 
       height: 100%;
       object-fit: cover;
       object-position: center center;
@@ -152,7 +149,7 @@
       right: 12em;
 
       .swiper-pagination-bullet {
-        background-color: $transparent;
+        background-color: $secondary;
         border: 2px solid $secondary-deep;
         width: 0.8em;
         height: 0.8em;
@@ -160,7 +157,7 @@
       }
 
       .swiper-pagination-bullet-active {
-        background-color: $secondary-deep;
+        background-color: $secondary;
         border-color: $secondary-deep;
       }
     }
