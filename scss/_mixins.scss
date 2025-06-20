@@ -261,4 +261,12 @@ flex: 0 0 calc(50% - 30px);
     }
   }
 }
-
+@mixin clamp-lines($lines: 3, $line-height: 1.5em) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: $line-height;
+  max-height: calc(#{$line-height} * #{$lines});
+}

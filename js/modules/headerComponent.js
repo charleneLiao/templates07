@@ -2,7 +2,7 @@ window.loadHeader = function () {
   const container = document.getElementById("headerComponent");
   if (!container) return;
 
-  // Create headerMain and headerSticky
+  // 建立 headerMain 與 headerSticky
   const mainHeader = document.createElement("div");
   mainHeader.id = "headerMain";
 
@@ -18,9 +18,9 @@ window.loadHeader = function () {
 
     wrapper.innerHTML += `
       <div class="logo d-flex align-items-center">
-      <a href="index.html">
-      <img src="images/TESTOLOGO _logo.svg" alt="TESTO HOTEL" height="23" />
-      </a>
+        <a href="index.html">
+          <img src="images/TESTOLOGO _logo.svg" alt="TESTO HOTEL" height="23" />
+        </a>
       </div>
       <div class="language-selector dropdown d-md-block ms-auto">
         <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,13 +35,13 @@ window.loadHeader = function () {
       <div class="action-buttons d-flex"> 
         <i class="fa-brands fa-facebook"></i>
         <i class="fa-brands fa-instagram"></i>
-        <i class="fa-regular fa-circle-user"></i>
+        <a id="openMemberModalBtnMobile"><i class="fa-regular fa-circle-user"></i></a>
       </div>
       <svg id="menuToggle" class="ham hamRotate ham1 menu-icon" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
-      <path class="line top" d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40"></path>
-      <path class="line middle" d="m 30,50 h 40"></path>
-      <path class="line bottom" d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40"></path>
-    </svg>
+        <path class="line top" d="m 30,33 h 40 ..."></path>
+        <path class="line middle" d="m 30,50 h 40"></path>
+        <path class="line bottom" d="m 30,67 h 40 ..."></path>
+      </svg>
     `;
 
     section.appendChild(wrapper);
@@ -50,11 +50,22 @@ window.loadHeader = function () {
 
   mainHeader.appendChild(headerContent());
   stickyHeader.appendChild(headerContent());
-  container.innerHTML = '';
+
+  container.innerHTML = "";
   container.appendChild(mainHeader);
   container.appendChild(stickyHeader);
 
-  // Build Main Menu with Submenus
+  // 登入事件
+  const headerJoinBtn = container.querySelector("#openMemberModalBtnMobile");
+  if (headerJoinBtn) {
+    headerJoinBtn.addEventListener("click", function () {
+      if (typeof window.loadLoginModal === "function") {
+        window.loadLoginModal();
+      }
+    });
+  }
+
+  // 選單組成
   const nav = document.createElement("nav");
   nav.className = "main-menu";
   const ul = document.createElement("ul");
@@ -64,6 +75,7 @@ window.loadHeader = function () {
     items: [
       {
         title: "最新消息",
+        href: "news.html",
         children: [
           { title: "住宿優惠", href: "news.html?category=住宿優惠" },
           { title: "餐飲優惠", href: "news.html?category=餐飲優惠" },
@@ -83,7 +95,7 @@ window.loadHeader = function () {
       },
       { title: "飯店介紹", href: "about.html", children: [] },
       { title: "設施介紹", href: "facility.html", children: [] },
-      { title: "聯絡我們", href: "location.html", children: [] },
+      { title: "聯絡我們", href: "location.html", children: [] }
     ]
   };
 
@@ -91,17 +103,9 @@ window.loadHeader = function () {
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.href = item.href;
-    if (item.children && item.children.length > 0) {
-      a.innerHTML = `${item.title} <i class="fa-solid fa-angle-down toggle-icon"></i>`;
-    } else {
-      a.textContent = item.title;
-    }
-
-    if (item.target) a.target = item.target;
-    if (item.modalTarget) {
-      a.setAttribute("data-toggle", "modal");
-      a.setAttribute("data-target", item.modalTarget);
-    }
+    a.innerHTML = (item.children && item.children.length > 0)
+      ? `${item.title} <i class="fa-solid fa-angle-down toggle-icon"></i>`
+      : item.title;
     li.appendChild(a);
 
     if (item.children && item.children.length > 0) {
@@ -127,16 +131,12 @@ window.loadHeader = function () {
 
   window.addEventListener("scroll", () => {
     const scrollTop = window.scrollY;
-    if (scrollTop > 100) {
-      mainHeader.style.display = "none";
-      stickyHeader.classList.add("show");
-    } else {
-      mainHeader.style.display = "block";
-      stickyHeader.classList.remove("show");
-    }
+    mainHeader.style.display = scrollTop > 100 ? "none" : "block";
+    stickyHeader.classList.toggle("show", scrollTop > 100);
   });
 
-  const langItems = container.querySelectorAll('.language-selector .dropdown-item');
+  // 語系切換
+  const langItems = container.querySelectorAll(".language-selector .dropdown-item");
   const savedLang = localStorage.getItem("lang") || "zh-TW";
   const langBtn = container.querySelector("#languageDropdown");
   if (langBtn) langBtn.textContent = getLangLabel(savedLang);
@@ -144,8 +144,7 @@ window.loadHeader = function () {
   langItems.forEach(item => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
-      const lang = this.dataset.lang;
-      localStorage.setItem("lang", lang);
+      localStorage.setItem("lang", this.dataset.lang);
       location.reload();
     });
   });
@@ -164,56 +163,31 @@ window.loadHeader = function () {
     if (toggle) {
       nav.classList.toggle("show");
       toggle.classList.toggle("open");
-      const label = toggle.querySelector(".mt-1");
-      if (label) label.textContent = nav.classList.contains("show") ? "關閉" : "菜單";
     }
   });
 
-  // 加入會員按鈕（桌機）
-  const desktopBtn = document.getElementById("openMemberModalBtn");
-  if (desktopBtn) {
-    desktopBtn.addEventListener("click", function () {
-      if (typeof window.loadLoginModal === "function") {
-        window.loadLoginModal();
-      }
-    });
-  }
-
-  // ✅ 插入手機按鈕
+  // 插入手機 footer 預訂按鈕
   const mobileBtns = document.createElement("div");
   mobileBtns.className = "mobile-bottom-buttons";
-  mobileBtns.innerHTML = `
-    <a href="booking.html" class="btn btn-bookroom flex-fill">客房預訂</a>
-    <button class="btn btn-member flex-fill" id="openMemberModalBtnMobile">加入會員</button>
-  `;
+  mobileBtns.innerHTML = `<a href="#" class="btn btn-bookroom flex-fill"><i class="fa-solid fa-bed"></i></a>`;
   document.body.appendChild(mobileBtns);
 
-  // ✅ 等 append 完再抓
-  const mobileBtn = mobileBtns.querySelector("#openMemberModalBtnMobile");
-  if (mobileBtn) {
-    mobileBtn.addEventListener("click", function () {
-      if (typeof window.loadLoginModal === "function") {
-        window.loadLoginModal();
-      }
+  // ✅ 綁定所有 .btn-bookroom 行為
+  const bookingBar = document.getElementById("bookingBarComponent");
+  function setupBookroomEvents() {
+    const bookroomBtns = document.querySelectorAll(".btn-bookroom");
+    bookroomBtns.forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (bookingBar) {
+          bookingBar.classList.toggle("active");
+          if (bookingBar.classList.contains("active")) {
+            bookingBar.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
     });
   }
 
-  // ✅ 手機版客房預訂按鈕點擊展開 booking bar
-const bookroomBtn = mobileBtns.querySelector(".btn-bookroom");
-const bookingBar = document.getElementById("bookingBarComponent");
-
-if (bookroomBtn && bookingBar) {
-  bookroomBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // 切換顯示/隱藏
-    bookingBar.classList.toggle("active");
-
-    // 如果展開了就滑動到 booking bar
-    if (bookingBar.classList.contains("active")) {
-      bookingBar.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-}
-
+  setupBookroomEvents();
 };

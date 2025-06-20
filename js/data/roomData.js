@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .map(
           (article) => `
                     <div class="card-box">
-            <a href="${article.href}" class="cardAnime d-block card-fade-in">
+            <a href="${article.href}" class="cardRoom d-block card-fade-in">
                 <div class="card">
                 <img src="${article.img}" alt="${article.title}" />
                 <div class="text">
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="features">
                     <div class="hd">房型特色：</div>
-                    <div class="row">
+                    <div>
                     <ul>
                         <li><i class="fa-solid fa-umbrella-beach"></i> 帶座椅的陽台</li>
                         <li><i class="fa-solid fa-couch me-1"></i> 客廳</li>
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     if (target) {
       target.style.display = "block";
-      target.querySelectorAll(".cardAnime").forEach((card) => {
+      target.querySelectorAll(".cardRoom").forEach((card) => {
         card.classList.add("card-fade-in");
       });
     }

@@ -106,7 +106,7 @@
 
   .btn-dark {
     border-radius: 2em;
-    padding: 0.3em 2.2em;
+    padding: 0.3em 2em;
   }
 
   .row {
@@ -183,9 +183,8 @@
       width: 100%;
     }
   }
-
-  @include respond-max(sm) {
-    opacity: 0;
+    @include respond-max(lg) {
+    opacity: 1;
     transform: translateY(100%);
     transition: all 0.4s ease;
     pointer-events: none;
@@ -211,5 +210,6 @@
     .inoutbox {
       padding: 0.5em;
     }
-  }
+
+}
 }

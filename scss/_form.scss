@@ -85,10 +85,10 @@ border-color: $secondary !important;
     .text-primary,.text-warning{
          color: $secondary01 !important;
     }
-
+// 選定tab
     .text-danger {
-        color: $secondary01 !important;
-        background-color: rgba($primary, 0.3);
+        color: $secondary !important;
+        background-color: rgba($primary, 1);
     }
 
     .btn-outline-secondary {

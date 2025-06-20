@@ -7,6 +7,9 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  .row{
+      --bs-gutter-x: 0rem;
+  }
 
   .logo {
     position: absolute;

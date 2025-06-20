@@ -2,6 +2,7 @@
 /*bg*/
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
   letter-spacing: 0.05rem;
   word-wrap: break-word;
   line-height: 1.6;
+  height: 100%;
 }
 
 /* 3. 標題與段落 */
@@ -227,8 +229,8 @@ a {
 }
 
 .row {
+  gap: 0;
   --bs-gutter-x: 0;
-  --bs-gutter-y: 0;
 }
 
 .container-fluid {
@@ -299,6 +301,38 @@ section {
   background-repeat: no-repeat;
 }
 
+#scrollToTopBtn {
+  border: 1px solid #004080;
+  border-radius: 2em;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 2.3em;
+  height: 2.3em;
+  background: transparent;
+  color: #004080;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+  background: rgba(0, 64, 128, 0.2);
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 575.98px) {
+  #scrollToTopBtn {
+    bottom: 5rem;
+  }
+}
 @keyframes slideDownFade {
   0% {
     opacity: 0;
@@ -688,6 +722,10 @@ section {
   gap: 1.3em;
   margin: 0 1.3em;
 }
+.gn-header .action-buttons a {
+  color: #f0e1d5;
+  cursor: pointer;
+}
 .gn-header .action-buttons i {
   font-size: 1.1em;
 }
@@ -706,11 +744,20 @@ section {
   background-color: #6f4e37;
 }
 .gn-header .menu-icon {
-  width: 57px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 60px;
   cursor: pointer;
   text-align: center;
   font-size: 0.9em;
   white-space: nowrap;
+  border-radius: 3em;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.gn-header .menu-icon:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  color: #000000;
 }
 .gn-header .menu-icon .icon-lines div {
   height: 2px;
@@ -751,7 +798,7 @@ section {
 }
 .gn-header .menu-icon {
   position: absolute;
-  top: 49px;
+  top: 69px;
   right: 15px;
 }
 @media (max-width: 992px) {
@@ -1074,6 +1121,12 @@ main .hd.title h2 {
   background-color: #144747;
   border: 1px solid #f0e1d5;
   color: #f0e1d5;
+  display: none;
+}
+@media (max-width: 576px) {
+  .mobile-bottom-buttons .btn-bookroom {
+    display: block;
+  }
 }
 .mobile-bottom-buttons .btn-restaurant {
   background-color: rgba(42, 24, 24, 0.9294117647);
@@ -1248,7 +1301,7 @@ main .hd.title h2 {
 }
 #bookingBarComponent .btn-dark {
   border-radius: 2em;
-  padding: 0.3em 2.2em;
+  padding: 0.3em 2em;
 }
 #bookingBarComponent .row {
   gap: 0;
@@ -1311,9 +1364,9 @@ main .hd.title h2 {
     width: 100%;
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 992px) {
   #bookingBarComponent {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(100%);
     transition: all 0.4s ease;
     pointer-events: none;
@@ -1419,6 +1472,9 @@ main .hd.title h2 {
   position: relative;
   height: 100vh;
   overflow: hidden;
+}
+.bannerComponent .row {
+  --bs-gutter-x: 0rem;
 }
 .bannerComponent .logo {
   position: absolute;
@@ -1761,7 +1817,7 @@ main .hd.title h2 {
   opacity: 1;
 }
 #popularRoomsComponent .swiper2 .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #f0e1d5;
+  background-color: #d2a599;
   border-color: #d2a599;
 }
 #popularRoomsComponent .room-tabs {
@@ -2025,12 +2081,6 @@ main .hd.title h2 {
 
 .category-group.active {
   display: block;
-}
-
-.category-group .card {
-  -moz-column-break-inside: avoid;
-       break-inside: avoid;
-  margin-bottom: 1.5rem;
 }
 
 .room-slider-wrapper {
@@ -2559,11 +2609,119 @@ main .hd.title h2 {
   }
 }
 
+.category-group .cardAnime {
+  display: flex;
+  flex-direction: row;
+  height: 250px;
+  box-sizing: border-box;
+}
+.category-group .cardAnime .card {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+  flex-direction: row;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.category-group .cardAnime .card .card-body .card-title {
+  font-weight: normal;
+  margin-bottom: 2em;
+}
+.category-group .cardAnime .card .card-body .card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  max-height: calc(1.5em * 3);
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+.category-group .cardAnime .card .card-body .date-mark {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5em;
+  font-family: "Times New Roman", "Noto Serif TC", serif;
+}
+.category-group .cardAnime .card .card-body .date-mark .date {
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 2;
+  position: relative;
+}
+.category-group .cardAnime .card .card-body .date-mark .circle {
+  position: absolute;
+  right: -1.8em;
+  top: 0.45em;
+  width: 2.2em;
+  height: 2.2em;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.category-group .cardAnime .card .card-body .date-mark .circle .weekday {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.category-group .cardAnime .card .imgBox {
+  aspect-ratio: 5.2/3;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.category-group .cardAnime .card .imgBox img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.category-group .cardAnime .card .imgBox:hover img {
+  transform: scale(1.2);
+}
+.category-group .cardAnime .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 576px) {
+  .category-group .cardAnime {
+    height: auto;
+  }
+  .category-group .cardAnime .card {
+    flex-direction: initial !important;
+    display: inline-block;
+  }
+  .category-group .cardAnime .card .imgBox {
+    aspect-ratio: 5/2;
+    height: auto;
+  }
+}
+
+#location .ratio::before {
+  display: initial;
+}
+#location .row {
+  --bs-gutter-x: 0;
+}
+#location .map {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
 #rooms .container {
   margin-bottom: 0;
-}
-#rooms > .container-fluid > .in {
-  margin-bottom: 5em;
 }
 #rooms .section {
   margin: 0 auto;
@@ -2735,8 +2893,8 @@ span.flatpickr-weekday,
   color: #c2d3af !important;
 }
 .loginForm .text-danger {
-  color: #c2d3af !important;
-  background-color: rgba(29, 60, 51, 0.3);
+  color: #f0e1d5 !important;
+  background-color: #1d3c33;
 }
 .loginForm .btn-outline-secondary {
   background-color: #ffffff;
@@ -2892,6 +3050,27 @@ span.flatpickr-weekday,
   padding: 1em;
   font-size: 1.5em;
   margin-bottom: 1em;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  color: #676060;
+}
+#pageHeader section .text .goBack {
+  width: 158px;
+  font-size: 0.6em;
+  text-align: right;
+  color: #676060;
+}
+#pageHeader section .text .goBack i {
+  border-radius: 2em;
+  border: 1px solid #676060;
+  color: #676060;
+  font-size: 1em;
+  padding: 5px;
+}
+#pageHeader section .text .goBack:hover {
+  color: #676060;
 }
 #pageHeader .hd {
   width: 100%;
@@ -2927,6 +3106,18 @@ span.flatpickr-weekday,
   bottom: 6.5em;
   left: 8em;
   letter-spacing: 20px;
+}
+@media (max-width: 576px) {
+  #pageHeader .hd h1, #pageHeader .hd p {
+    display: inline-block;
+    text-align: left;
+  }
+  #pageHeader .hd p {
+    left: 2em;
+  }
+  #pageHeader .hd h1 {
+    left: 0.4em;
+  }
 }
 
 #precautions {

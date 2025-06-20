@@ -1,20 +1,20 @@
-@use './variables' as *;
-@use './breakpoints' as *;
-@use './mixins' as *;
+@use "./variables" as *;
+@use "./breakpoints" as *;
+@use "./mixins" as *;
 
 a {
   color: $text-color;
 }
 
 .row {
+  gap: 0;
   --bs-gutter-x: 0;
-  --bs-gutter-y: 0;
 }
 
 .container-fluid {
   padding: 0;
 }
-.container{
+.container {
   @include respond-max(md) {
     padding: 0 1em;
   }
@@ -45,8 +45,8 @@ a {
     opacity: 1;
     visibility: visible;
   }
-  @include respond-max(sm){
-     bottom: 5rem;
+  @include respond-max(sm) {
+    bottom: 5rem;
   }
 }
 
@@ -65,7 +65,8 @@ a {
   margin-bottom: 1em;
 }
 
-#specialOffersComponent {}
+#specialOffersComponent {
+}
 
 section {
   padding: 2em 0;
@@ -74,7 +75,7 @@ section {
 #parallaxImageComponent {
   .parallax-image {
     height: 60vh;
-    background-image: url('../images/banner/BannerPhoto01.jpg');
+    background-image: url("../images/banner/BannerPhoto01.jpg");
     /* 替換為你的圖片路徑 */
     background-attachment: fixed;
     background-size: cover;
@@ -83,5 +84,35 @@ section {
   }
 }
 
-// 表頭
-#popularRoomsComponent {}
+#scrollToTopBtn {
+  border: 1px solid #004080;
+  border-radius: 2em;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 2.3em;
+  height: 2.3em;
+  background: transparent;
+  color: #004080;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+  background: rgba(0, 64, 128, 0.2);
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 575.98px) {
+  #scrollToTopBtn {
+    bottom: 5rem;
+  }
+}

@@ -8,5 +8,5 @@ git push -u origin main
 
 git status 
 git add .
-git commit -m "滾動視差那張圖"
+git commit -m "FINISHED"
 git push

@@ -8,7 +8,7 @@ window.loadDiningFacilities = function () {
       
       <div class="container my-5">
       <h2 class="hd-title">嚴選食材，精緻饗食</h2>
-        <div class="row g-4" id="diningFacilitiesRow"></div>
+        <div class="row" id="diningFacilitiesRow"></div>
       </div>
     </section>
   `;

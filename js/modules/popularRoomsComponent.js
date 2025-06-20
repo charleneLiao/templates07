@@ -120,7 +120,7 @@ window.loadPopularRooms = function () {
             <h5 class="card-title">${room.title}</h5>
             <p class="card-text">${room.desc}</p>
             <div class="btnBox">
-              <a href="#" class="btn btn-primary-border">詳細介紹</a>
+              <a href="rooms_detail.html" class="btn btn-primary-border">詳細介紹</a>
               <a href="#" class="btn btn-booking">預定</a>
             </div>
           </div>

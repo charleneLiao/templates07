@@ -35,6 +35,10 @@
     justify-content: center;
     gap: 1.3em;
     margin: 0 1.3em;
+    a{
+      color: $secondary;
+      cursor: pointer;
+    }
 
     i {
       font-size: 1.1em;
@@ -64,12 +68,21 @@
   }
 
   .menu-icon {
-    width: 57px;
+    background-color: rgba($black, 0.2);
+    width: 60px;
     cursor: pointer;
     text-align: center;
     font-size: 0.9em;
     white-space: nowrap;
+    border-radius: 3em;
+     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 
+  &:hover {
+    background-color: rgba($black, 0.35); // 背景加深
+    box-shadow: 0 0 8px rgba($black, 0.3); // 添加陰影
+    transform: scale(1.05); // 輕微放大
+    color: $black; // 可選：字色強調
+  }
     .icon-lines {
       div {
         height: 2px;
@@ -121,7 +134,7 @@
 
   .menu-icon {
     position: absolute;
-    top: 49px;
+    top: 69px;
     right: 15px;
 
     @include respond-max(lg) {
@@ -488,6 +501,10 @@ main {
     background-color: $secondary03;
     border: 1px solid $secondary;
     color: $secondary;
+    display: none;
+      @include respond-max(sm){
+    display: block;
+  }
   }
 
   .btn-restaurant {
