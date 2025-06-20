@@ -502,9 +502,6 @@ main {
     border: 1px solid $secondary;
     color: $secondary;
     display: none;
-      @include respond-max(sm){
-    display: block;
-  }
   }
 
   .btn-restaurant {

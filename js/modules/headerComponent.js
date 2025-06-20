@@ -38,10 +38,16 @@ window.loadHeader = function () {
         <a id="openMemberModalBtnMobile"><i class="fa-regular fa-circle-user"></i></a>
       </div>
       <svg id="menuToggle" class="ham hamRotate ham1 menu-icon" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
-        <path class="line top" d="m 30,33 h 40 ..."></path>
-        <path class="line middle" d="m 30,50 h 40"></path>
-        <path class="line bottom" d="m 30,67 h 40 ..."></path>
-      </svg>
+  <path
+    class="line top"
+    d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40"
+  />
+  <path class="line middle" d="m 30,50 h 40" />
+  <path
+    class="line bottom"
+    d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40"
+  />
+</svg>
     `;
 
     section.appendChild(wrapper);
@@ -80,8 +86,8 @@ window.loadHeader = function () {
           { title: "住宿優惠", href: "news.html?category=住宿優惠" },
           { title: "餐飲優惠", href: "news.html?category=餐飲優惠" },
           { title: "活動訊息", href: "news.html?category=活動訊息" },
-          { title: "藝文活動", href: "news.html?category=藝文活動" }
-        ]
+          { title: "藝文活動", href: "news.html?category=藝文活動" },
+        ],
       },
       {
         title: "房型介紹",
@@ -90,29 +96,30 @@ window.loadHeader = function () {
           { title: "尊爵VIP", href: "rooms.html?category=尊爵VIP" },
           { title: "豪華房", href: "rooms.html?category=豪華房" },
           { title: "經典房", href: "rooms.html?category=經典房" },
-          { title: "商務房", href: "rooms.html?category=商務房" }
-        ]
+          { title: "商務房", href: "rooms.html?category=商務房" },
+        ],
       },
       { title: "飯店介紹", href: "about.html", children: [] },
       { title: "設施介紹", href: "facility.html", children: [] },
-      { title: "聯絡我們", href: "location.html", children: [] }
-    ]
+      { title: "聯絡我們", href: "location.html", children: [] },
+    ],
   };
 
-  data.items.forEach(item => {
+  data.items.forEach((item) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.href = item.href;
-    a.innerHTML = (item.children && item.children.length > 0)
-      ? `${item.title} <i class="fa-solid fa-angle-down toggle-icon"></i>`
-      : item.title;
+    a.innerHTML =
+      item.children && item.children.length > 0
+        ? `${item.title} <i class="fa-solid fa-angle-down toggle-icon"></i>`
+        : item.title;
     li.appendChild(a);
 
     if (item.children && item.children.length > 0) {
       li.classList.add("has-submenu");
       const submenu = document.createElement("ul");
       submenu.className = "submenu list-unstyled";
-      item.children.forEach(sub => {
+      item.children.forEach((sub) => {
         const subLi = document.createElement("li");
         const subA = document.createElement("a");
         subA.href = sub.href;
@@ -136,12 +143,14 @@ window.loadHeader = function () {
   });
 
   // 語系切換
-  const langItems = container.querySelectorAll(".language-selector .dropdown-item");
+  const langItems = container.querySelectorAll(
+    ".language-selector .dropdown-item"
+  );
   const savedLang = localStorage.getItem("lang") || "zh-TW";
   const langBtn = container.querySelector("#languageDropdown");
   if (langBtn) langBtn.textContent = getLangLabel(savedLang);
 
-  langItems.forEach(item => {
+  langItems.forEach((item) => {
     item.addEventListener("click", function (e) {
       e.preventDefault();
       localStorage.setItem("lang", this.dataset.lang);
@@ -151,10 +160,14 @@ window.loadHeader = function () {
 
   function getLangLabel(code) {
     switch (code) {
-      case "zh-TW": return "CN";
-      case "en": return "EN";
-      case "ja": return "JP";
-      default: return "Language";
+      case "zh-TW":
+        return "CN";
+      case "en":
+        return "EN";
+      case "ja":
+        return "JP";
+      default:
+        return "Language";
     }
   }
 

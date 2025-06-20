@@ -1123,11 +1123,6 @@ main .hd.title h2 {
   color: #f0e1d5;
   display: none;
 }
-@media (max-width: 576px) {
-  .mobile-bottom-buttons .btn-bookroom {
-    display: block;
-  }
-}
 .mobile-bottom-buttons .btn-restaurant {
   background-color: rgba(42, 24, 24, 0.9294117647);
   color: #f0e1d5;
