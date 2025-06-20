@@ -8,5 +8,5 @@ git push -u origin main
 
 git status 
 git add .
-git commit -m "FINISHED"
+git commit -m "選單按鈕高度"
 git push
