@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TESTO HOTEL</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
     <!-- 主樣式 -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- 外掛樣式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css">
-
-
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="fonts/fontawesome/css/all.min.css" />
 
     <!-- 外掛 JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -34,68 +45,70 @@
     <script src="js/tools/goTop.js" defer></script>
     <script src="js/modules/headerComponent.js" defer></script>
     <script src="js/modules/footerComponent.js" defer></script>
-      <script src="js/modules/pageHeader.js" defer></script>
+    <script src="js/modules/pageHeader.js" defer></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            if (typeof loadHeader === "function") loadHeader();
-            if (typeof loadFooter === "function") loadFooter();
-            if (typeof loadpageHeader === "function") loadpageHeader();
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof loadHeader === "function") loadHeader();
+        if (typeof loadFooter === "function") loadFooter();
+        if (typeof loadpageHeader === "function") loadpageHeader();
+      });
     </script>
-</head>
+  </head>
 
-<body data-page="news">
-
+  <body data-page="news">
     <div id="headerComponent"></div>
     <div id="pageHeader"></div>
 
     <main>
-        <div id="news">
-            <div class="container mt-3">
-
-            </div>
-            <div class="container">
-                <div class="in">
-                    <div id="detail" class="clearfix">
-                        <div class="wrap_01">
-                            <div class="row">
-                                <div class="col-md-6 col-12">
-                                    <h2>《花香沁心．薰衣草檸檬特調體驗》</h2>
-                                    <div class="dateWrap">
-                                        <span class="newsitem">住宿優惠</span><i class="fa-solid fa-arrow-right"></i>
-                                        <p class="newsday">2017.09.01~2017.11.30</p>
-                                    </div>
-
-                                    <img src="images/news/news-flower.jpg" class="img-responsive">
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <p class="text-muted">
-                                        在這個專屬於悠閒與愜意的季節，我們誠摯邀請您參加「<strong>花香沁心．薰衣草檸檬特調體驗</strong>」，讓味蕾與感官一同沉浸於花香與果香交織的清爽之旅。
-                                    </p>
-                                    <p class="text-muted">
-                                        活動主打現場手調的「薰衣草檸檬氣泡飲」與「花香果漾冷泡茶」，選用新鮮檸檬片、精選可食用薰衣草與微氣泡礦泉水，帶來口感輕盈卻層次豐富的花系飲品。推薦搭配手工餅乾與飯店露臺午後茶席，打造夢幻打卡畫面。
-                                    </p>
-                                    <p class="text-muted">
-                                        現場另設花藝調飲小講座，邀芳療師教您運用花草入飲，並可親手製作專屬花材飲品，創造專屬香氛記憶。
-                                    </p>
-
-                                    <ul class="list-unstyled text-muted mb-3">
-                                        <li><strong>活動時間：</strong>每日 14:00～17:00（限量，建議預約）</li>
-                                        <li><strong>活動地點：</strong>本館 1F 花園陽台 Café</li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-primary px-4">立即預約體驗</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div id="news">
+        <div class="container mt-3"></div>
+        <div class="container">
+          <div class="in">
+            <div id="detail" class="clearfix">
+              <div class="wrap_01">
+                <h2>《花香沁心．薰衣草檸檬特調體驗》</h2>
+                <div class="dateWrap">
+                  <span class="newsitem">住宿優惠</span
+                  ><i class="fa-solid fa-arrow-right"></i>
+                  <p class="newsday">2017.09.01~2017.11.30</p>
                 </div>
+                <div class="row">
+                  <div class="col-md-6 col-12">
+                    <img
+                      src="images/news/news-flower.jpg"
+                      class="img-responsive"
+                    />
+                  </div>
+                  <div class="col-md-6 col-12">
+                    <p class="text-muted">
+                      在這個專屬於悠閒與愜意的季節，我們誠摯邀請您參加「<strong>花香沁心．薰衣草檸檬特調體驗</strong>」，讓味蕾與感官一同沉浸於花香與果香交織的清爽之旅。
+                    </p>
+                    <p class="text-muted">
+                      活動主打現場手調的「薰衣草檸檬氣泡飲」與「花香果漾冷泡茶」，選用新鮮檸檬片、精選可食用薰衣草與微氣泡礦泉水，帶來口感輕盈卻層次豐富的花系飲品。推薦搭配手工餅乾與飯店露臺午後茶席，打造夢幻打卡畫面。
+                    </p>
+                    <p class="text-muted">
+                      現場另設花藝調飲小講座，邀芳療師教您運用花草入飲，並可親手製作專屬花材飲品，創造專屬香氛記憶。
+                    </p>
+
+                    <ul class="list-unstyled text-muted mb-3">
+                      <li>
+                        <strong>活動時間：</strong>每日
+                        14:00～17:00（限量，建議預約）
+                      </li>
+                      <li><strong>活動地點：</strong>本館 1F 花園陽台 Café</li>
+                    </ul>
+
+                    <a href="#" class="btn btn-primary px-4">立即預約體驗</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </main>
 
     <div id="footerComponent"></div>
-</body>
-
+  </body>
 </html>

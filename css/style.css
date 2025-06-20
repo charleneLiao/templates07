@@ -2204,6 +2204,12 @@ main .hd.title h2 {
     height: 18px;
   }
 }
+#news #detail .wrap_01 {
+  width: calc(100% - 3em);
+}
+#news #detail .wrap_01 .row {
+  --bs-gutter-x: 2em;
+}
 #news #detail .newsitem {
   margin-right: 1em;
 }
@@ -3052,7 +3058,7 @@ span.flatpickr-weekday,
   color: #676060;
 }
 #pageHeader section .text .goBack {
-  width: 158px;
+  width: 182px;
   font-size: 0.6em;
   text-align: right;
   color: #676060;

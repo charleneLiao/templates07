@@ -5,6 +5,12 @@
 
 #news {
   #detail {
+    .wrap_01{
+      width: calc(100% - 3em);
+      .row{
+        --bs-gutter-x: 2em;
+      }
+    }
     h2 {
     }
 
