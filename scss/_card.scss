@@ -97,6 +97,9 @@
 
 // 最新消息卡片
 .category-group {
+  .row{
+    --bs-gutter-x: 3rem;
+  }
   .cardAnime {
     display: flex;
     flex-direction: row;

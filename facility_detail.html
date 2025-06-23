@@ -36,29 +36,27 @@
     <script src="js/tools/toggle.js" defer></script>
     <script src="js/modules/headerComponent.js" defer></script>
     <script src="js/modules/footerComponent.js" defer></script>
+      <script src="js/modules/pageHeader.js" defer></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             if (typeof loadHeader === "function") loadHeader();
             if (typeof loadFooter === "function") loadFooter();
             if (typeof loadBookingBar === "function") loadBookingBar();
+            if (typeof loadpageHeader === "function") loadpageHeader();
         });
     </script>
 
 </head>
 
-<body>
+<body data-page="facility">
 
     <div id="headerComponent"></div>
+    <div id="pageHeader"></div>
 
     <main>
         <div id="facility">
             <div class="container mt-3">
-                <div class="hd title text-center mb-4">
-                    <h1>Hotel Facilities</h1>
-                    <p>飯店設施一覽</p>
-                    <h2>海景恆溫泳池</h2>
-                </div>
             </div>
             <div class="container-fluid">
                 <div class="in">

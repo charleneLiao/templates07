@@ -2615,6 +2615,9 @@ main .hd.title h2 {
   }
 }
 
+.category-group .row {
+  --bs-gutter-x: 3rem;
+}
 .category-group .cardAnime {
   display: flex;
   flex-direction: row;
